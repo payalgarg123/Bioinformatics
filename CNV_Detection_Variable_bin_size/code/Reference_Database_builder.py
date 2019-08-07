@@ -2,7 +2,6 @@ import numpy as np
 import glob
 import pandas as pd
 import os
-from multiprocessing import Pool
 import time as tm
 import argparse
 
@@ -38,7 +37,7 @@ def normalization_reads(data,new_s):
 
 def reference_database(nums):
     appended_data=[]
-    for infile in glob.glob('args.normalization_file_location+"/*tsv'):
+    for infile in glob.glob(args.normalization_file_location+"/*tsv"):
             data = pd.read_csv(infile, sep='\t',usecols=['space','start','end','reads'])
             group = data.groupby('space')
             chromosome_list=['chr1','chr2','chr3','chr4','chr5','chr6','chr7','chr8','chr9','chr10','chr11','chr12','chr13','chr14','chr15','chr16','chr17','chr18','chr19','chr20','chr21','chr22','chrX','chrY']
